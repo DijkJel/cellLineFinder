@@ -1,4 +1,24 @@
-
+#' Return Cell Lines
+#'
+#' This function returns a data frame containing cell lines and gene expression values for the specified mutations and genes.
+#'
+#' @param se The summarizedExperiment that comes with the package.
+#' @param mutations A character vector specifying the mutations of interest.
+#' @param genes A character vector specifying the genes of interest. In case of NULL, no gene expression data is shown.
+#' @param group_var A character string specifying the grouping variable in the colData of \code{se}. Default is NULL.
+#' @param group_lvl A character string specifying the level of the grouping variable. Required if \code{group_var} is provided.
+#'
+#' @return A data frame with cell line names and gene expression values.
+#'
+#' @examples
+#' \dontrun{
+#' returnCellLines(se, mutations = C('SMAD4', 'APC'), genes = c('CDK2', 'PTEN'), group_var = "oncoTreeCode", group_lvl = "COAD")
+#' }
+#'
+#'
+#'
+#' @importFrom SummarizedExperiment colData assay
+#' @export
 returnCellLines = function(se, mutations, genes = NULL, group_var = NULL, group_lvl = NULL){
 
 
@@ -44,6 +64,4 @@ returnCellLines = function(se, mutations, genes = NULL, group_var = NULL, group_
   df = cbind(df, t(reads))
 
   return(df)
-
-
 }

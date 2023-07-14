@@ -36,6 +36,8 @@ Plots oncoplots showing which mutations are present in cell lines and optionally
 This function generates a heatmap plot based on mutation data and gene expression data from cell lines.
 }
 \examples{
+\dontrun{
 plotHeatmap(se, mutations = c("APC", "KRAS"), genes = c("TP53", "CDK9"),
 group_var = "oncoTreeCode", group_lvl = "COAD")
+}
 }

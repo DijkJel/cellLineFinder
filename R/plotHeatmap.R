@@ -19,8 +19,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' plotHeatmap(se, mutations = c("APC", "KRAS"), genes = c("TP53", "CDK9"),
 #' group_var = "oncoTreeCode", group_lvl = "COAD")
+#' }
+
 
 plotHeatmap = function(se, mutations, genes = NULL, group_var = NULL, group_lvl = NULL, cell_lines = NULL, remove_na = TRUE){
 
