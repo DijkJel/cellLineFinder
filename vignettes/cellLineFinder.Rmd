@@ -1,0 +1,78 @@
+---
+title: "cellLineFinder"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{cellLineFinder}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Install and load the package from github with the following code:
+
+```{r, eval = FALSE}
+if (!require('devtools', quietly = T)){
+  install_packages('devtools')
+}
+
+devtools::install_github('DijkJel/cellLineFinder')
+
+```
+
+
+```{r setup}
+library(cellLineFinder)
+```
+
+The cellFinderPackage includes a summary of RNA-sequencing and WES data from DepMap and WES data from the COSMIC cell line project.
+All data is included in a SummarizedExperiment object. Check the SummarizedExperiment vignette for more information on the organization
+and handling of SE objects. 
+
+To load the data, run the following:
+
+```{r}
+se <- load_se()
+```
+
+This loads the data that comes with the package. To get an overview of the data:
+
+```{r}
+se
+```
+
+The SE object contains information on gene expression and mutations in 1864 cell lines,
+although not all cell lines have both expression and mutations data. 
+
+The package contains only two functions to visualize the data: findCellLine() and plotHeatmap().
+
+findCellLine() returns a data frame with cell lines that contain specified mutations and optionally
+adds z-scores of gene expression data for specified genes. In addition, the SE object can be subsetted 
+to include only cell lines that belong to a specific group (using the group_var and group_lvl variables).
+group_var should be a column name present in the colData of SE, group_lvl one of the levels present in the
+specified group_var. For example, the following code returns all cell colorectal cancer cell lines that 
+contain SMAD4 and APC mutations. In addition, z-scores for gene expression of beta-catenin and frizzled-2 for 
+the identified cell lines are returned:
+
+
+```{r}
+cl <- findCellLines(se, mutations = c('SMAD4', 'APC'), genes = c('CTNNB1', 'FZD2'), group_var = 'OncotreeCode', group_lvl = 'COAD')
+```
+
+In a similar way, mutations and gene expression can be visualized in heatmaps:
+
+
+```{r}
+hm <- plotHeatmap(se, mutations = c('SMAD4', 'APC'), genes = c('CTNNB1', 'FZD2'), group_var = 'OncotreeCode', group_lvl = 'COAD')
+
+```
+
+Information about the mutations and gene expression is stored in the 'hm' object as list and can be accessed using the '$' operator. 
+In the upper heatmap, mutations in cell lines are shown and it is specified whether a mutation was present in the depmap, cosmic, or
+both data sets. 
+
