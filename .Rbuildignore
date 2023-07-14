@@ -1,0 +1,6 @@
+^LICENSE\.md$
+^setup\.R$
+^extData$
+^cellLineFinder\.Rproj$
+^\.Rproj\.user$
+^extData/*$
