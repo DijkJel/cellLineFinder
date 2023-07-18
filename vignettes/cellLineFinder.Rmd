@@ -19,12 +19,10 @@ Install and load the package from github with the following code:
 ```{r, eval = FALSE}
 if (!require('BiocManager', quietly = T)){
   install_packages('BiocManager')
-  library(biocManager)
 }
 
 if (!require('devtools', quietly = T)){
   install_packages('devtools')
-  library(biocManager)
 }
 
 install_github('DijkJel/cellLineFinder')
@@ -54,7 +52,7 @@ se
 The SE object contains information on gene expression and mutations in 1864 cell lines,
 although not all cell lines have both expression and mutations data. 
 
-The package contains only two functions to visualize the data: findCellLine() and plotHeatmap().
+The package contains only two functions to visualize the data: findCellLines() and plotHeatmap().
 
 findCellLine() returns a data frame with cell lines that contain specified mutations and optionally
 adds z-scores of gene expression data for specified genes. In addition, the SE object can be subsetted 
@@ -67,6 +65,8 @@ the identified cell lines are returned:
 
 ```{r}
 cl <- findCellLines(se, mutations = c('SMAD4', 'APC'), genes = c('CTNNB1', 'FZD2'), group_var = 'OncotreeCode', group_lvl = 'COAD')
+
+cl
 ```
 
 In a similar way, mutations and gene expression can be visualized in heatmaps:
