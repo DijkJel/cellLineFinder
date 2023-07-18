@@ -19,7 +19,7 @@
 #'
 #' @importFrom SummarizedExperiment colData assay
 #' @export
-returnCellLines = function(se, mutations, genes = NULL, group_var = NULL, group_lvl = NULL){
+findCellLines = function(se, mutations, genes = NULL, group_var = NULL, group_lvl = NULL){
 
 
   if (!is.null(group_var)){
