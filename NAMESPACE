@@ -2,7 +2,7 @@
 
 export(load_se)
 export(plotHeatmap)
-export(returnCellLines)
+export(findCellLines)
 import(ComplexHeatmap)
 import(SummarizedExperiment)
 importFrom(SummarizedExperiment,assay)
