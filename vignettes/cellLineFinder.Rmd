@@ -17,12 +17,17 @@ knitr::opts_chunk$set(
 Install and load the package from github with the following code:
 
 ```{r, eval = FALSE}
-if (!require('devtools', quietly = T)){
-  install_packages('devtools')
+if (!require('BiocManager', quietly = T)){
+  install_packages('BiocManager')
+  library(biocManager)
 }
 
-devtools::install_github('DijkJel/cellLineFinder')
+if (!require('devtools', quietly = T)){
+  install_packages('devtools')
+  library(biocManager)
+}
 
+install_github('DijkJel/cellLineFinder')
 ```
 
 
