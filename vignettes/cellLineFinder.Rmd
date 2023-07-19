@@ -14,6 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+The cellLineFinder package includes a summary of RNA-sequencing and WES data from DepMap and WES data from the COSMIC cell line project.
+It can be used to identify and visualize cell lines that contain specific mutations and explore mRNA expression levels for most cell lines.
+All data is included in a SummarizedExperiment object. Check the SummarizedExperiment vignette for more information on the organization
+and handling of SE objects. 
+
+
 Install and load the package from github with the following code:
 
 ```{r, eval = FALSE}
@@ -33,9 +39,6 @@ install_github('DijkJel/cellLineFinder')
 library(cellLineFinder)
 ```
 
-The cellFinderPackage includes a summary of RNA-sequencing and WES data from DepMap and WES data from the COSMIC cell line project.
-All data is included in a SummarizedExperiment object. Check the SummarizedExperiment vignette for more information on the organization
-and handling of SE objects. 
 
 To load the data, run the following:
 
